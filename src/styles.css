@@ -408,6 +408,12 @@ body {
   background: rgba(148, 163, 184, 0.9);
 }
 
+.fc-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .fc-idcard-qr-caption {
   font-size: 8px;
   color: #9ca3af;

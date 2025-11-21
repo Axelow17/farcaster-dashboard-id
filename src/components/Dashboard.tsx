@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardUser, RecentCast } from "../Types";
+import QRCode from 'qrcode';
 
 type DashboardProps = {
   user: DashboardUser;
@@ -32,6 +33,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
   onDownloadCard
 }) => {
   const hasRealActivity = recentCasts && recentCasts.length > 0;
+  const [qrCodeUrl, setQrCodeUrl] = useState<string>('');
+
+  useEffect(() => {
+    if (user.username) {
+      QRCode.toDataURL(`https://warpcast.com/${user.username}`)
+        .then(url => setQrCodeUrl(url))
+        .catch(err => console.error('Error generating QR code:', err));
+    }
+  }, [user.username]);
 
   return (
     <div className="fc-app-root">
@@ -204,21 +214,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
                 <div className="fc-idcard-qr-col">
                   <div className="fc-idcard-qr">
-                    <div className="fc-qr-row">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <div className="fc-qr-row">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <div className="fc-qr-row">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
+                    <img src={qrCodeUrl} alt="QR Code" className="fc-qr-img" />
                   </div>
                   <span className="fc-idcard-qr-caption">
                     Scan on Farcaster
