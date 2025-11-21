@@ -384,8 +384,8 @@ body {
 }
 
 .fc-idcard-qr {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 8px;
   border: 1px solid rgba(148, 163, 184, 0.9);
   padding: 4px;
