@@ -27,6 +27,8 @@
     "ogDescription": "View your Farcaster data and mint your identity card as an NFT.",
     "ogImageUrl": "https://farcaster-dashboard-id-5rgh.vercel.app/og-image.png",
     "noindex": false,
+    "castShareUrl": "https://farcaster-dashboard-id-5rgh.vercel.app",
+    "embeds": ["url"],
     "requiredCapabilities": ["actions.composeCast"]
   }
 }
