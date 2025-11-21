@@ -11,6 +11,8 @@
     "version": "1",
     "name": "Farcaster Dashboard ID",
     "homeUrl": "https://farcaster-dashboard-id-5rgh.vercel.app",
+    "imageUrl": "https://farcaster-dashboard-id-5rgh.vercel.app/og-image.png",
+    "buttonTitle": "Open Dashboard",
     "iconUrl": "https://farcaster-dashboard-id-5rgh.vercel.app/icon.png",
     "splashImageUrl": "https://farcaster-dashboard-id-5rgh.vercel.app/splash.png",
     "splashBackgroundColor": "#020617",
