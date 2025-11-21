@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { sdk } from "@farcaster/miniapp-sdk";
 import { DashboardUser, RecentCast } from "./Types";
 import { Dashboard } from "./components/Dashboard";
+import * as htmlToImage from 'html-to-image';
 
 const MINIAPP_URL =
   import.meta.env.VITE_MINIAPP_URL || "https://farcaster-dashboard-id-5rgh.vercel.app";
@@ -17,6 +18,7 @@ const App: React.FC = () => {
   );
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const loadNeynarData = async (fid: number) => {
     if (!NEYNAR_API_KEY) {
@@ -154,9 +156,19 @@ const App: React.FC = () => {
   };
 
   const handleDownloadCard = () => {
-    alert(
-      "Download card is not implemented yet. A developer can hook html-to-image here."
-    );
+    if (cardRef.current) {
+      htmlToImage.toPng(cardRef.current)
+        .then((dataUrl) => {
+          const link = document.createElement('a');
+          link.download = 'farcaster-card.png';
+          link.href = dataUrl;
+          link.click();
+        })
+        .catch((error) => {
+          console.error('Error generating image:', error);
+          alert('Failed to download card. Please try again.');
+        });
+    }
   };
 
   if (loading) {
@@ -196,13 +208,15 @@ const App: React.FC = () => {
   }
 
   return (
-    <Dashboard
-      user={user}
-      recentCasts={recentCasts}
-      onMint={handleMint}
-      onShare={handleShare}
-      onDownloadCard={handleDownloadCard}
-    />
+    <div ref={cardRef}>
+      <Dashboard
+        user={user}
+        recentCasts={recentCasts}
+        onMint={handleMint}
+        onShare={handleShare}
+        onDownloadCard={handleDownloadCard}
+      />
+    </div>
   );
 };
 
