@@ -4,7 +4,7 @@ import { DashboardUser, RecentCast } from "./Types";
 import { Dashboard } from "./components/Dashboard";
 
 const MINIAPP_URL =
-  import.meta.env.VITE_MINIAPP_URL || "https://farcaster-dashboard-id.vercel.app";
+  import.meta.env.VITE_MINIAPP_URL || "https://farcaster-dashboard-id-5rgh.vercel.app";
 const MINT_URL =
   import.meta.env.VITE_MINT_URL || `${MINIAPP_URL}/mint`; // your mint page / dapp URL
 
