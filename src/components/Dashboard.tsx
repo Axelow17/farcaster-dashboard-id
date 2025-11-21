@@ -80,7 +80,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 )}
                 {typeof user.neynarScore === "number" && (
                   <span className="fc-pill fc-pill-ghost">
-                    ⭐ Score {user.neynarScore.toFixed(2)}
+                    ⭐ Neynar Score {user.neynarScore.toFixed(2)}
                   </span>
                 )}
               </div>
